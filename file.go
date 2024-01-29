@@ -4,10 +4,12 @@ package main
 import (
     "os"
     "log"
+    "fmt"
 )
 
 func writeString(s string) {
-    stateFile := "/home/tarik/.config/waybar/repeat_state"
+    home := os.Getenv("HOME")
+    stateFile := fmt.Sprintf("%s/.config/waybar/repeat_state", home)
 
     file, err := os.Create(stateFile)
     if err != nil {
