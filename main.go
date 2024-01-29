@@ -26,7 +26,7 @@ func main() {
         if os.Args[i + 1] == "1" {
             timeUnit = "minute"
         }
-        notify := exec.Command("notify-send", fmt.Sprintf("%s for %s %s", os.Args[i], os.Args[i + 1], timeUnit))
+        notify := exec.Command("notify-send", fmt.Sprintf("%s for %s %s", os.Args[i], os.Args[i + 1], timeUnit), "--icon=dialog-information")
         notify.Run()
         fmt.Println(os.Args[i])
         minutes, err := strconv.Atoi(os.Args[i + 1])
