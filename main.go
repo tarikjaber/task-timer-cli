@@ -35,6 +35,10 @@ func main() {
         }
         totalSeconds := minutes * 60
         for totalSeconds > 0 {
+            stateString := fmt.Sprintf("%s %02d:%02d", os.Args[i], totalSeconds / 60, totalSeconds % 60)
+            writeString(stateString)
+            signalWaybar := exec.Command("pkill", "-RTMIN+10", "waybar")
+            signalWaybar.Run()
             fmt.Printf("\r%02d:%02d", totalSeconds / 60, totalSeconds % 60)
             totalSeconds -= 1
             time.Sleep(1 * time.Second)
